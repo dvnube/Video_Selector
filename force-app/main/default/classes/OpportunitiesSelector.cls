@@ -13,5 +13,12 @@ public class OpportunitiesSelector extends Selector {
         fieldSet = SObjectType.Opportunity.FieldSets.Selector;
     }
 
+    public List<Opportunity> selectByStageNames(Set<String> stageNames) {
+        String query = buildQuery();
+        query += ' WHERE StageName IN :stageNames';
+
+        return (List<Opportunity>) Database.query(query);
+    }
+
 }
 
