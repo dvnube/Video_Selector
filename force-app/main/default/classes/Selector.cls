@@ -11,10 +11,12 @@ public virtual class Selector {
         return query;
     }
  
-    public String buildQueryWithChildRelationship(Selector childInstance) {
+    public String buildQueryWithChildRelationship(Set<Selector> childsInstances) {
         String query = ' SELECT ';
         query += getFields(this.fieldSet);
-        query += buildRelationshipQuery(childInstance);
+        for (Selector childInstance : childsInstances) {
+            query += buildRelationshipQuery(childInstance);
+        }        
         query += ' FROM ' + this.sObjType;
 
         return query;

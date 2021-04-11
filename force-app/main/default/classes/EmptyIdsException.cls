@@ -1,0 +1,1 @@
+public class EmptyIdsException extends Exception {}
